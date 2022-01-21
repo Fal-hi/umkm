@@ -1,0 +1,23 @@
+	<!-- Navbar -->
+	<?php include "header.php"; ?>
+	<!-- END Navbar -->
+<!-- BEGIN Container -->
+	<div class="container" id="main-container">
+		<!-- BEGIN Sidebar -->
+		<?php include "menu.php"; ?>	
+		<!-- END Sidebar -->
+
+		<!-- BEGIN Content -->
+		<div id="main-content">
+			<!-- BEGIN Page Title -->
+
+			<?php include "main.php"; ?>
+
+			<a id="btn-scrollup" class="btn btn-circle btn-lg" href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>
+		<footer>
+			<p>2020 © FLATY Admin Template.</p>
+		</footer>
+		<!-- END Content -->
+	</div>
+	<!-- END Container -->
