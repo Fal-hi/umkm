@@ -10,15 +10,15 @@ $idmerchant = $_GET["idmerchant"];
   <div class="row margin40">
     <div class="col-sm-8 col-sm-offset-2 text-center">
       <div class="col-sm-12 text-center">
-      <h2>Riawayat Order Detail</h2>
-    </div>
-    <a href="model/cetakfakturpemesanan.php?id=<?php echo $id; ?>&idmerchant=<?php echo $idmerchant; ?>" target=\"_blank\" >
-    <button type="button" class="btn btn-primary">
-      <span class="glyphicon glyphicon-pencil"></span> Cetak Faktur 
-    </button>
-    </a>
-    <br><br>
-    <br><br>
+        <h2>Riawayat Order Detail</h2>
+      </div>
+      <a href="model/cetakfakturpemesanan.php?id=<?php echo $id; ?>&idmerchant=<?php echo $idmerchant; ?>" target=\"_blank\">
+        <button type="button" class="btn btn-primary">
+          <span class="glyphicon glyphicon-pencil"></span> Cetak Faktur
+        </button>
+      </a>
+      <br><br>
+      <br><br>
       <table class="table table-striped table-bordered table-hover">
         <tr align=center class="table-active">
           <th>No</th>
@@ -34,14 +34,14 @@ $idmerchant = $_GET["idmerchant"];
           $total = $total + $r["subtotal"];
           $ongkos = $r["tarif"];
           $kota = $r["namakota"];
-          ?>
+        ?>
           <tr>
             <td><?php echo $no; ?></td>
             <td><?php echo $r["namaproduk"]; ?></td>
             <td><?php echo $r["jumlah"]; ?></td>
             <td><?php echo $r["subtotal"]; ?></td>
           </tr>
-          <?php $no++;
+        <?php $no++;
         }
         ?>
         <tr>

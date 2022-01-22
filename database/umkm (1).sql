@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 21, 2022 at 08:25 AM
--- Server version: 8.0.27
--- PHP Version: 8.0.9
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 22 Jan 2022 pada 06.22
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,11 +25,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
-  `idadmin` int NOT NULL,
+  `idadmin` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` text NOT NULL,
   `namalengkap` varchar(50) NOT NULL,
@@ -36,7 +37,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`idadmin`, `username`, `password`, `namalengkap`, `level`) VALUES
@@ -46,11 +47,11 @@ INSERT INTO `admin` (`idadmin`, `username`, `password`, `namalengkap`, `level`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `anggota`
+-- Struktur dari tabel `anggota`
 --
 
 CREATE TABLE `anggota` (
-  `idanggota` int NOT NULL,
+  `idanggota` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` text NOT NULL,
   `namalengkap` varchar(50) NOT NULL,
@@ -61,7 +62,7 @@ CREATE TABLE `anggota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `anggota`
+-- Dumping data untuk tabel `anggota`
 --
 
 INSERT INTO `anggota` (`idanggota`, `username`, `password`, `namalengkap`, `jk`, `nohp`, `alamat`, `tgldaftar`) VALUES
@@ -70,49 +71,57 @@ INSERT INTO `anggota` (`idanggota`, `username`, `password`, `namalengkap`, `jk`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Struktur dari tabel `cart`
 --
 
 CREATE TABLE `cart` (
-  `idcart` int NOT NULL,
-  `idproduk` int NOT NULL,
-  `idanggota` int NOT NULL,
-  `jumlahbeli` int NOT NULL,
+  `idcart` int(11) NOT NULL,
+  `idproduk` int(11) NOT NULL,
+  `idanggota` int(11) NOT NULL,
+  `jumlahbeli` int(11) NOT NULL,
   `tglcart` date NOT NULL,
-  `idmerchant` int NOT NULL
+  `idmerchant` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konfimasibayar`
+-- Struktur dari tabel `konfimasibayar`
 --
 
 CREATE TABLE `konfimasibayar` (
-  `idkonfirmasi` int NOT NULL,
+  `idkonfirmasi` int(11) NOT NULL,
   `idorder` varchar(50) NOT NULL,
   `namabankpengirim` varchar(50) NOT NULL,
-  `jumlahtransfer` int NOT NULL,
+  `jumlahtransfer` int(11) NOT NULL,
   `tgltransfer` date NOT NULL,
   `namabanktujuan` varchar(50) NOT NULL,
-  `idmerchant` int NOT NULL,
+  `idmerchant` int(11) NOT NULL,
   `bukti` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `konfimasibayar`
+--
+
+INSERT INTO `konfimasibayar` (`idkonfirmasi`, `idorder`, `namabankpengirim`, `jumlahtransfer`, `tgltransfer`, `namabanktujuan`, `idmerchant`, `bukti`) VALUES
+(1, '20220122104315', 'Pina', 20000, '2022-01-22', 'Nagari', 1, '1_2022-01-22_transfer1.jpg'),
+(2, '20220122120746', 'Pina', 25000, '2022-01-22', 'Nagari', 1, '1_2022-01-22_transfer2.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kota`
+-- Struktur dari tabel `kota`
 --
 
 CREATE TABLE `kota` (
-  `idkota` int NOT NULL,
+  `idkota` int(11) NOT NULL,
   `namakota` varchar(50) NOT NULL,
-  `tarif` int NOT NULL
+  `tarif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kota`
+-- Dumping data untuk tabel `kota`
 --
 
 INSERT INTO `kota` (`idkota`, `namakota`, `tarif`) VALUES
@@ -122,11 +131,11 @@ INSERT INTO `kota` (`idkota`, `namakota`, `tarif`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `merchant`
+-- Struktur dari tabel `merchant`
 --
 
 CREATE TABLE `merchant` (
-  `idmerchant` int NOT NULL,
+  `idmerchant` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` text NOT NULL,
   `namatoko` varchar(50) NOT NULL,
@@ -134,11 +143,11 @@ CREATE TABLE `merchant` (
   `nohp` varchar(15) NOT NULL,
   `alamat` text NOT NULL,
   `tgldaftar` date NOT NULL,
-  `status` int NOT NULL
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `merchant`
+-- Dumping data untuk tabel `merchant`
 --
 
 INSERT INTO `merchant` (`idmerchant`, `username`, `password`, `namatoko`, `jk`, `nohp`, `alamat`, `tgldaftar`, `status`) VALUES
@@ -147,66 +156,82 @@ INSERT INTO `merchant` (`idmerchant`, `username`, `password`, `namatoko`, `jk`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Struktur dari tabel `order`
 --
 
 CREATE TABLE `order` (
   `idorder` varchar(100) NOT NULL,
-  `idanggota` int NOT NULL,
+  `idanggota` int(11) NOT NULL,
   `alamatkirim` text NOT NULL,
-  `total` int NOT NULL,
+  `total` int(11) NOT NULL,
   `tglorder` date NOT NULL,
-  `idmerchant` int NOT NULL,
-  `idstatusorder` int NOT NULL COMMENT '1=tunggubayar. 2=konfirmasiadmin. 3=diterima. 0=cancel'
+  `idmerchant` int(11) NOT NULL,
+  `idstatusorder` int(11) NOT NULL COMMENT '1=tunggubayar. 2=konfirmasiadmin. 3=diterima. 0=cancel'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `order`
+--
+
+INSERT INTO `order` (`idorder`, `idanggota`, `alamatkirim`, `total`, `tglorder`, `idmerchant`, `idstatusorder`) VALUES
+('20220122104315', 1, 'Kota Padang', 20000, '2022-01-22', 1, 4),
+('20220122120746', 1, 'modan keren', 25000, '2022-01-22', 1, 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderdetail`
+-- Struktur dari tabel `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
   `idorder` varchar(50) NOT NULL,
-  `idproduk` int NOT NULL,
-  `idkota` int NOT NULL,
-  `jumlah` int NOT NULL,
-  `subtotal` int NOT NULL,
-  `idmerchant` int NOT NULL,
-  `idstatusorder` int NOT NULL
+  `idproduk` int(11) NOT NULL,
+  `idkota` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `subtotal` int(11) NOT NULL,
+  `idmerchant` int(11) NOT NULL,
+  `idstatusorder` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`idorder`, `idproduk`, `idkota`, `jumlah`, `subtotal`, `idmerchant`, `idstatusorder`) VALUES
+('20220122104315', 20, 1, 1, 10000, 1, 4),
+('20220122120746', 20, 2, 2, 20000, 1, 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
+-- Struktur dari tabel `produk`
 --
 
 CREATE TABLE `produk` (
-  `idproduk` int NOT NULL,
+  `idproduk` int(11) NOT NULL,
   `namaproduk` varchar(100) NOT NULL,
-  `hargaproduk` int NOT NULL,
-  `stok` int NOT NULL,
+  `hargaproduk` int(11) NOT NULL,
+  `stok` int(11) NOT NULL,
   `detailproduk` text NOT NULL,
   `foto` text NOT NULL,
-  `idmerchant` int NOT NULL
+  `idmerchant` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produk`
+-- Dumping data untuk tabel `produk`
 --
 
 INSERT INTO `produk` (`idproduk`, `namaproduk`, `hargaproduk`, `stok`, `detailproduk`, `foto`, `idmerchant`) VALUES
-(20, 'Burger', 10000, 10, 'Burger enak', 'burger.jpg', 1);
+(20, 'Burger', 10000, 7, 'Burger enak', 'burger.jpg', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statusorder`
+-- Struktur dari tabel `statusorder`
 --
 
 CREATE TABLE `statusorder` (
-  `idstatusorder` int NOT NULL,
+  `idstatusorder` int(11) NOT NULL,
   `namastatus` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -215,110 +240,110 @@ CREATE TABLE `statusorder` (
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`idadmin`);
 
 --
--- Indexes for table `anggota`
+-- Indeks untuk tabel `anggota`
 --
 ALTER TABLE `anggota`
   ADD PRIMARY KEY (`idanggota`);
 
 --
--- Indexes for table `cart`
+-- Indeks untuk tabel `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`idcart`);
 
 --
--- Indexes for table `konfimasibayar`
+-- Indeks untuk tabel `konfimasibayar`
 --
 ALTER TABLE `konfimasibayar`
   ADD PRIMARY KEY (`idkonfirmasi`);
 
 --
--- Indexes for table `kota`
+-- Indeks untuk tabel `kota`
 --
 ALTER TABLE `kota`
   ADD PRIMARY KEY (`idkota`);
 
 --
--- Indexes for table `merchant`
+-- Indeks untuk tabel `merchant`
 --
 ALTER TABLE `merchant`
   ADD PRIMARY KEY (`idmerchant`);
 
 --
--- Indexes for table `order`
+-- Indeks untuk tabel `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`idorder`,`idmerchant`);
 
 --
--- Indexes for table `produk`
+-- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`idproduk`);
 
 --
--- Indexes for table `statusorder`
+-- Indeks untuk tabel `statusorder`
 --
 ALTER TABLE `statusorder`
   ADD PRIMARY KEY (`idstatusorder`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `anggota`
+-- AUTO_INCREMENT untuk tabel `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `idanggota` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idanggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `idcart` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idcart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `konfimasibayar`
+-- AUTO_INCREMENT untuk tabel `konfimasibayar`
 --
 ALTER TABLE `konfimasibayar`
-  MODIFY `idkonfirmasi` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idkonfirmasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kota`
+-- AUTO_INCREMENT untuk tabel `kota`
 --
 ALTER TABLE `kota`
-  MODIFY `idkota` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idkota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `merchant`
+-- AUTO_INCREMENT untuk tabel `merchant`
 --
 ALTER TABLE `merchant`
-  MODIFY `idmerchant` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idmerchant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `produk`
+-- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `idproduk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idproduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `statusorder`
+-- AUTO_INCREMENT untuk tabel `statusorder`
 --
 ALTER TABLE `statusorder`
-  MODIFY `idstatusorder` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idstatusorder` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

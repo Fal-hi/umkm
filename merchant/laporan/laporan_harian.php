@@ -61,6 +61,8 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
   <title>Laporan </title>
 </head>
 
+<!-- <body> -->
+
 <body onload="window.print()">
   <br>
   <font>
@@ -69,12 +71,15 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
       <font size="6px">Go-Online</font><br>Laporan Pemesanan Harian
     </p>
   </font>
+
   <hr noshade="1">
   <br>
   <h3 align="center"> Laporan Pemesanan Harian</h3><br>
+
   <h5>
-    Tanggal : <?php echo $dateawalreal; ?>&nbsp;&nbsp;s/d&nbsp;&nbsp;<?php echo $dateakhireal; ?>
+    Tanggal : <?php echo $tglawal . " - " . $tglakhir ?>
   </h5>
+
   <table align="center" width="100%">
     <tr align=center class="table-active" bgcolor="yellow">
       <th width="10%">No</th>
@@ -84,118 +89,68 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
       <th width="5%">Jumlah</th>
       <th width="20%">Sub Total</th>
     </tr>
+
     <?php
     $no = 1;
-    $row = 1;
-    // $subtotal = 0;
+    $totalharga = 0;
+    $idkota = 1;
     $total = 0;
     $ongkir = 0;
     $q = mysqli_query(
       $con,
-      "
-    SELECT konfimasibayar.* , order.idstatusorder, orderdetail.idkota 
-    FROM konfimasibayar 
-    LEFT JOIN umkm.order ON konfimasibayar.idorder = order.idorder 
-    LEFT JOIN orderdetail ON konfimasibayar.idorder = orderdetail.idorder 
-    WHERE 
-    (order.idstatusorder = 3 OR order.idstatusorder = 4) AND konfimasibayar.idmerchant = '$idadmin' AND
-    konfimasibayar.tgltransfer BETWEEN '$tanggalawal' AND '$tanggalakhir'
-    GROUP BY order.idorder
-    "
+      "SELECT konfimasibayar.* , order.idstatusorder, produk.namaproduk, produk.hargaproduk, orderdetail.jumlah,orderdetail.idkota
+    FROM konfimasibayar
+    LEFT JOIN umkm.order ON konfimasibayar.idorder = order.idorder
+    LEFT JOIN produk ON konfimasibayar.idmerchant = produk.idmerchant
+    LEFT JOIN orderdetail ON konfimasibayar.idorder = orderdetail.idorder WHERE (order.idstatusorder = 3 OR order.idstatusorder = 4)
+    AND konfimasibayar.idmerchant = '$idadmin' AND konfimasibayar.tgltransfer BETWEEN '$tglawal' AND '$tglakhir' GROUP BY order.idorder"
+
     );
     while ($r = mysqli_fetch_array($q)) {
-
-      $qq = mysqli_query(
-        $con,
-        "SELECT idorder FROM orderdetail where idorder = '$r[idorder]' AND idmerchant = '$idadmin'"
-      );
-      $rows = mysqli_num_rows($qq);
-      ?>
-      <tr align="center">
-        <td width="10%" rowspan="<?php echo $rows +
-          1; ?>"><?php echo $no; ?></td>
-        <td width="20%" rowspan="<?php echo $rows + 1; ?>"><?php echo $r[
-  "idorder"
-]; ?></td>
-      </tr>
-      <?php
-      $qqq = mysqli_query(
-        $con,
-        "
-      SELECT orderdetail.*, produk.namaproduk, produk.hargaproduk, kota.tarif
-      FROM orderdetail
-      LEFT JOIN produk ON orderdetail.idproduk = produk.idproduk 
-      LEFT JOIN kota ON orderdetail.idkota = kota.idkota
-      WHERE idorder = '$r[idorder]' AND orderdetail.idmerchant = '$idadmin'
-      "
-      );
-      while ($h = mysqli_fetch_array($qqq)) { ?>
-        <tr align="center">
-          <td width="25%"><?php echo $h["namaproduk"]; ?></td>
-          <td width="15%">Rp.<?php echo number_format(
-            $h["hargaproduk"]
-          ); ?></td>
-          <td width="5%"><?php echo $h["jumlah"]; ?></td>
-          <?php
-          $subtotal = $h["jumlah"] * $h["hargaproduk"];
-          $total = $total + $subtotal;
-          ?>
-          <!-- <td width="5%"><?php echo $h["idkota"]; ?></td> -->
-          <td width="20%">Rp.<?php echo number_format($subtotal); ?></td>
-        </tr>
-      <?php }
-      ?>
-    <?php
-    $aa = mysqli_query(
-      $con,
-      "SELECT tarif FROM kota where idkota = '$r[idkota]'"
-    );
-    while ($bb = mysqli_fetch_array($aa)) {
-      $ongkir = $ongkir + $bb["tarif"];
-    }
-
-    $no++;
-
-    }
     ?>
-    <tr align="center">
-      <th colspan="5">
-        Total Harga :
-      </th>
-      <th colspan="2">
-        Rp.<?php echo number_format($total); ?>
-      </th>
-    </tr>
-    <tr align="center">
-      <th colspan="5">
-        Total Ongkir :
-      </th>
-      <th colspan="2">
-        Rp.<?php echo number_format($ongkir); ?>
-      </th>
-    </tr>
-    <tr align="center">
-      <th colspan="5">
-        Total Keseluruhan :
-      </th>
-      <th colspan="2">
-        Rp.<?php echo number_format($ongkir + $total); ?>
-      </th>
-    </tr>
-  </table>
-  <br>
-  <p>
-    Ket : <br>
-    Jumlah History : <b><?php echo $no - 1; ?></b> Order
-  </p>
-  <div align="right">
-    <table class="second">
-      <tr class="second">
-        <td align="center" class="second">PANYABUNGAN, <?php echo $dateformat; ?><br><br><br><br><br>
-          <?php echo $pimpinan; ?></td>
+      <tr align="center">
+        <td width="25%"><?php echo $no++ ?></td>
+        <td width="15%"><?php echo $r["idorder"] ?></td>
+        <td width="5%"><?php echo $r["namaproduk"] ?></td>
+        <?php
+        $totalharga = $r["jumlah"] * $r["hargaproduk"];
+        $idkota = $r["idkota"];
+        // $total = $total + $subtotal;
+        ?>
+        <td width="5%"><?php echo number_format($r["hargaproduk"]) ?></td>
+        <td width="20%"><?php echo $r["jumlah"] ?></td>
+        <td></td>
       </tr>
-    </table>
-  </div>
+      <tr align="center">
+        <th colspan="5">
+          Total Harga :
+        </th>
+        <th colspan="2">
+          <?php echo number_format($totalharga) ?>
+        </th>
+      </tr>
+      <tr align="center">
+        <th colspan="5">
+          Total Ongkir :
+        </th>
+        <?php
+        $kota = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM kota where idkota = '$idkota' "));
+        $total = $totalharga + $kota["tarif"];
+        ?>
+        <th colspan="2">
+          <?php echo number_format($kota["tarif"]) ?>
+        </th>
+      </tr>
+      <tr align="center">
+        <th colspan="5">
+          Total Keseluruhan :
+        </th>
+        <th colspan="2">
+          <?php echo number_format($total) ?>
+        </th>
+      </tr>
+    <?php } ?>
+  </table>
 </body>
 
 </html>

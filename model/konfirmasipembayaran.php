@@ -38,7 +38,7 @@ $idmerchant = $_GET['idmerchant'];
           <div class="form-group">
             <label for="password3" class="col-sm-3 col-lg-2 control-label">Tanggal Transfer</label>
             <div class="col-sm-9 col-lg-10 controls">
-              <input type="text" name="tgltransfer" placeholder="ex : tahun-bulan-hari" class="form-control" required autofocus>
+              <input type="date" name="tgltransfer" placeholder="ex : tahun-bulan-hari" class="form-control" required autofocus>
             </div>
           </div>
           <div class="form-group">
