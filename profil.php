@@ -9,7 +9,7 @@
     </div>
 </section>
 
-<footer class="bg-dark">
+<footer class="bg-dark fixed-bottom">
     <div class="container p-3">
         <h5 class="text-center text-white mb-0">
             &copy; Copyright 
@@ -27,13 +27,13 @@
 
     .profil h1 {
         color: #fff;
-        width: max-content;
-        padding: .5rem;
-        margin: 1.5rem auto;
+        /* width: max-content; */
+        padding: .5rem 0;
+        margin: 1.5rem 0;
     }
 
     .profil p {
-        font-size: 3rem;
+        font-size: 2.5rem;
         line-height: 4rem;
         text-align: center;
     }

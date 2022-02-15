@@ -3,11 +3,17 @@ include "core/kon.php";
 include "core/session.php";
 ?>
 
+<style>
+	.daftar-produk {
+		overflow-x: scroll;
+	}
+</style>
+
 <section class="container-fluid px-4">
 	<h1 class="mt-4">Produk</h1>
 	<h4>Di menu ini anda dapat melakukan input, edit dan hapus data</h4>
-	<div class="container">
-		<a href="index.php?p=tambahproduk" class="btn btn-success my-3">Tambah Data</a>
+	<a href="index.php?p=tambahproduk" class="btn btn-info text-white my-3">Tambah Data</a>
+	<div class="daftar-produk">
 		<table class="table">
 			<thead class="table-dark">
 				<tr>

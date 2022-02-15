@@ -19,19 +19,21 @@ include "core/session.php";
     <title>Dashboard - UMKM</title>
     <link href="library/css/styles.css" rel="stylesheet" />
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info">
+
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.php">Dashboard UMKM</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="bi bi-list"></i></button>
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
-            <li><a class="nav-link" href="core/logout.php"><i class="bi bi-box-arrow-right"></i> Sign out</a></li>
+            <li><a class="nav-link active" href="core/logout.php"><i class="bi bi-box-arrow-right"></i> Sign out</a></li>
         </ul>
     </nav>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
@@ -105,7 +107,10 @@ include "core/session.php";
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

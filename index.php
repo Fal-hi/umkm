@@ -26,25 +26,9 @@ ob_end_flush();
     <!-- Own Carousel -->
     <link href="css/own-carousel.min.css" rel="stylesheet">
     <!-- Bootstrap icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-    />
-    <!-- custom css  -->
-    <link href="css/real-estate.css" rel="stylesheet" type="text/css" media="screen">
-    <!-- font awesome for icons -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- Roboto font -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
-    <!--owl carousel css-->
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="css/owl.theme.css" rel="stylesheet" type="text/css" media="screen">
-    <!--mega menu -->
-    <link href="css/yamm.css" rel="stylesheet" type="text/css">
-    <link href="css/select.css" rel="stylesheet" type="text/css">
-    <!--Revolution slider css-->
-    <link href="rs-plugin/css/settings.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="css/rev-style.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
       <body>
         <script type="text/javascript">
@@ -81,33 +65,8 @@ ob_end_flush();
         ?>
 
         <!--scripts and plugins -->
-        <!--must need plugin jquery-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate.min.js"></script> 
-        <!--bootstrap js plugin-->
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>       
-        <!--easing plugin for smooth scroll-->
-        <script src="js/jquery.easing.1.3.min.js" type="text/javascript"></script>
-        <!--sticky header-->
-        <script type="text/javascript" src="js/jquery.sticky.js"></script>
-        <!--flex slider plugin-->
-        <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-        <!--parallax background plugin-->
-        <script src="js/jquery.stellar.min.js" type="text/javascript"></script>
-        <!--owl carousel slider-->
-        <script src="js/owl.carousel.min.js" type="text/javascript"></script>
-        <script src="js/classie.js" type="text/javascript"></script>
-        <script src="js/selectFx.js" type="text/javascript"></script>
-        <!--revolution slider plugins-->
-        <script src="rs-plugin/js/jquery.themepunch.tools.min.js" type="text/javascript"></script>
-        <script src="rs-plugin/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
-        <script src="js/tweetie.min.js" type="text/javascript"></script>
-        <!--on scroll animation-->
-        <script src="js/wow.min.js" type="text/javascript"></script>
-        <!--customizable plugin edit according to your needs-->
-        <script src="js/real-estate-custom.js" type="text/javascript"></script>
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="bootstrap/js/popper.min.js"></script>     
         <script src="js/own-carousel.min.js" type="text/javascript"></script>
     </body>
-
-    <!-- Mirrored from bootstraplovers.com/templates/assan-2.2/real-estate/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Apr 2016 08:48:01 GMT -->
     </html>

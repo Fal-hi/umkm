@@ -101,7 +101,7 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
     WHERE 
     (order.idstatusorder = 3 OR order.idstatusorder = 4) AND konfimasibayar.idmerchant = '$idadmin' AND
     konfimasibayar.tgltransfer BETWEEN '$tanggalawal' AND '$tanggalakhir'
-    GROUP BY order.idorder
+    ORDER BY order.idorder
     "
     );
     while ($r = mysqli_fetch_array($q)) {

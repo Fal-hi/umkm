@@ -8,41 +8,40 @@ $idmerchant = $_GET['idmerchant'];
 <br>
 <br>
 <div class="container">
-  <div class="row margin40">
-    <div class="col-sm-10 col-sm-offset-1 text-center">
-      <div class="col-sm-12 text-center">
-        <h2>Konfirmasi Pembayaran</h2>
-      </div>
-      <div class="col-sm-12 text-center">
-        <form method="POST" action="index.php?p=contambahbayar" class="form-horizontal form-row-separated" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+        <br>
+        <h2 class="text-center">Konfirmasi Pembayaran</h2>
+      <div class="col-md-8 mx-auto">
+        <form method="POST" action="index.php?p=contambahbayar" class="ms-5" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="textfield3" class="col-sm-3 col-lg-2 control-label">No Order</label>
-            <div class="col-sm-9 col-lg-10 controls">
-              <input type="text" name="order" placeholder="" class="form-control" disabled value="<?php echo $id; ?>">
+            <label for="textfield3" class="my-2 control-label">No Order</label>
+            <div class="col-sm-10 col-lg-10 controls">
+              <input type="text" name="order" class="form-control fw-bold" disabled value="<?php echo $id; ?>">
             </div>
             <input type="hidden" value="<?php echo $id; ?>" name="idorder">
             <input type="hidden" value="<?php echo $idmerchant; ?>" name="idmerchant">
           </div>
           <div class="form-group">
-            <label for="textfield3" class="col-sm-3 col-lg-2 control-label">Nama Bank Pengirim</label>
+            <label for="textfield3" class="my-2 control-label">Nama Bank Pengirim</label>
             <div class="col-sm-9 col-lg-10 controls">
               <input type="text" name="namabankpengirim" placeholder="" class="form-control" required autofocus>
             </div>
           </div>
           <div class="form-group">
-            <label for="password3" class="col-sm-3 col-lg-2 control-label">Jumlah Transfer</label>
+            <label for="password3" class="my-2 control-label">Jumlah Transfer</label>
             <div class="col-sm-9 col-lg-10 controls">
               <input type="text" name="jumlahtransfer" placeholder="" class="form-control" required autofocus>
             </div>
           </div>
           <div class="form-group">
-            <label for="password3" class="col-sm-3 col-lg-2 control-label">Tanggal Transfer</label>
+            <label for="password3" class="my-2 control-label">Tanggal Transfer</label>
             <div class="col-sm-9 col-lg-10 controls">
               <input type="date" name="tgltransfer" placeholder="ex : tahun-bulan-hari" class="form-control" required autofocus>
             </div>
           </div>
           <div class="form-group">
-            <label for="textarea3" class="col-sm-3 col-lg-2 control-label">Tujuan Bank Transfer</label>
+            <label for="textarea3" class="my-2 control-label">Tujuan Bank Transfer</label>
             <div class="col-sm-9 col-lg-10 controls">
               <select class="form-control" name="namabanktujuan" required autofocus>
                 <option></option>
@@ -52,15 +51,15 @@ $idmerchant = $_GET['idmerchant'];
             </div>
           </div>
           <div class="form-group">
-            <label for="textarea3" class="col-sm-3 col-lg-2 control-label">Bukti Transfer</label>
+            <label for="textarea3" class="my-2 control-label">Bukti Transfer</label>
             <div class="col-sm-9 col-lg-10 controls">
-              <input type="file" name="file" placeholder="" class="form-control" required autofocus>
+              <input type="file" name="file" class="form-control" required autofocus>
             </div>
           </div>
-          <div class="form-group last">
-            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-              <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save</button>
-              <button type="reset" class="btn">Cancel</button>
+          <div class="form-group col-sm-9 col-lg-10 my-2">
+            <div class="float-end">
+              <button type="reset" class="btn btn-warning text-white">Cancel</button>
+              <button type="submit" class="btn btn-info text-white">Save</button>
             </div>
           </div>
         </form>

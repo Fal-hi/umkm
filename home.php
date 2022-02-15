@@ -1,10 +1,26 @@
 <?php
 include "core/kon.php"; ?>
+
+<style>
+  .carousel-caption {
+    bottom: -10px;
+    width: auto;
+  }
+  .carousel-caption a {
+    text-decoration: none;
+    color: #fff;
+  }
+</style>
+
 <!-- Home Carousel -->
 <section class="homepage">
   <div class="container-fluid">
-    <img src="img/estate/hpumkm.jpg" alt="homepage">
-    <a href="https://www.freepik.com/vectors/shopping">Shopping vector created by pikisuperstar - www.freepik.com</a>
+    <div class="card border-0">
+      <img src="img/estate/hpumkm.jpg" alt="homepage">
+      <div class="carousel-caption">
+        <a href="https://www.freepik.com/vectors/shopping">Shopping vector created by pikisuperstar - www.freepik.com</a>
+      </div>
+    </div>
   </div>
 </section>
 <!-- End Home Carousel -->
@@ -135,7 +151,7 @@ include "core/kon.php"; ?>
 </section>
 <!-- End Produk Terbaru -->
 
-<footer class="bg-dark">
+<footer class="bg-dark sticky-bottom">
     <div class="container p-3">
         <h5 class="text-center text-white mb-0">
             &copy; Copyright by UMKM

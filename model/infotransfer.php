@@ -5,16 +5,16 @@
                 <h2>Transaksi Berhasil</h2>
                 <p>
                     Silahkan Melanjutkannya dengan melakukan Pembayaran ke : <br>
-                    BANK BRI : 3273-01-030048-53-7 <br>
-                    a/n : Sutan Nasution
+                    BANK BRI : 5340-01-014228-53-2 <br>
+                    a/n : Elpina Sari Dewi Hasibuan
                 </p>
                 <p>
                     atau
                 </p>
                 <p>
                     Silahkan Melanjutkannya dengan melakukan Pembayaran ke : <br>
-                    BANK BNI : 0910138763 <br>
-                    a/n : Bpk.Sutan Nasution
+                    BANK BTN : 10070-01-57-009631-4 <br>
+                    a/n : Elpina Sari Dewi Has
                 </p>
                 <p class="bg-info text-white">
                     Pastikan anda mentransfer sesuai dengan harga yang sesuai, <br>

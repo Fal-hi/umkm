@@ -25,14 +25,14 @@ include "core/session.php";
 
                 $images = $path . $r["foto"];
                 $subtotal = $r["hargaproduk"] * $r["jumlahbeli"];
-                var_dump($subtotal);
+                // var_dump($subtotal);
             ?>
                 <div class="row property-listing">
                     <div class="col-sm-4 margin30">
                         <div class="image">
                             <div class="content">
                                 <a href="#"><i class="fa fa-search-plus"></i></a>
-                                <img src="<?php echo $images; ?>" class="img-responsive" alt="propety">
+                                <img src="<?php echo $images; ?>" class="img-fluid" alt="propety">
                                 <span class="label-property">Harga Satuan</span>
                                 <span class="label-price">
                                     Rp.<?php echo number_format(
@@ -46,7 +46,7 @@ include "core/session.php";
                     </div>
                     <!--image col-->
                     <div class="col-sm-8">
-                        <h3><a href="#"><?php echo $r["namaproduk"]; ?></a></h3>
+                        <h3><a class="text-decoration-none" href="#"><?php echo $r["namaproduk"]; ?></a></h3>
                         <br>
                         <p>
                             Jumlah Beli <?php echo $r["jumlahbeli"]; ?>
@@ -57,9 +57,7 @@ include "core/session.php";
                         </p>
                         <div class="clearfix">
                             <div class="pull-left">
-                            </div>
-                            <div class="pull-right">
-                                <a href="index.php?p=conhapuscart&id=<?php echo $r["idcart"]; ?>"><i class="fa fa-trash"></i> Cancel</a>
+                                <a class="btn btn-warning" href="index.php?p=conhapuscart&id=<?php echo $r["idcart"]; ?>"><i class="fa fa-trash"></i> Cancel</a>
                             </div>
                         </div>
                     </div>

@@ -103,9 +103,7 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
     LEFT JOIN umkm.order ON konfimasibayar.idorder = order.idorder
     LEFT JOIN produk ON konfimasibayar.idmerchant = produk.idmerchant
     LEFT JOIN orderdetail ON konfimasibayar.idorder = orderdetail.idorder WHERE (order.idstatusorder = 3 OR order.idstatusorder = 4)
-    AND konfimasibayar.idmerchant = '$idadmin' AND konfimasibayar.tgltransfer BETWEEN '$tglawal' AND '$tglakhir' GROUP BY order.idorder"
-
-    );
+    AND konfimasibayar.idmerchant = '$idadmin' AND konfimasibayar.tgltransfer BETWEEN '$tglawal' AND '$tglakhir' ORDER BY order.idorder");
     while ($r = mysqli_fetch_array($q)) {
     ?>
       <tr align="center">

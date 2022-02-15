@@ -89,12 +89,12 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
     // $subtotal = 0;
     $total = 0;
     $ongkir = 0;
-    $q = mysqli_query($con, "SELECT konfimasibayar.* , order.idstatusorder, orderdetail.idkota FROM konfimasibayar LEFT JOIN umkm.order ON konfimasibayar.idorder = order.idorder LEFT JOIN orderdetail ON konfimasibayar.idorder = orderdetail.idorder WHERE (order.idstatusorder = 3 OR order.idstatusorder = 4) AND konfimasibayar.tgltransfer BETWEEN '$tanggalawal' AND '$tanggalakhir' GROUP BY order.idorder");
+    $q = mysqli_query($con, "SELECT konfimasibayar.* , order.idstatusorder, orderdetail.idkota FROM konfimasibayar LEFT JOIN umkm.order ON konfimasibayar.idorder = order.idorder LEFT JOIN orderdetail ON konfimasibayar.idorder = orderdetail.idorder WHERE (order.idstatusorder = 3 OR order.idstatusorder = 4) AND konfimasibayar.tgltransfer BETWEEN '$tanggalawal' AND '$tanggalakhir' ORDER BY order.idorder");
 
     while ($r = mysqli_fetch_array($q)) {
         $qq = mysqli_query($con, "SELECT idorder FROM orderdetail WHERE idorder = '$r[idorder]' AND (orderdetail.idstatusorder = 3 OR orderdetail.idstatusorder = 4)");
         $rows = mysqli_num_rows($qq);
-      }
+      
       ?>
       <tr align="center">
         <td width="10%" rowspan="<?php echo $rows + 1; ?>">
@@ -106,7 +106,7 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
       </tr>
 
       <?php
-        $qqq = mysqli_query($con, "SELECT orderdetail.*, produk.namaproduk, produk.hargaproduk, kota.tarif FROM orderdetail LEFT JOIN produk ON orderdetail.idproduk = produk.idproduk LEFT JOIN kota ON orderdetail.idkota = kota.idkota WHERE idorder = '$r[idorder]' AND (orderdetail.idstatusorder = 3 orderdetail.idstatusorder = 4)");
+        $qqq = mysqli_query($con, "SELECT orderdetail.*, produk.namaproduk, produk.hargaproduk, kota.tarif FROM orderdetail LEFT JOIN produk ON orderdetail.idproduk = produk.idproduk LEFT JOIN kota ON orderdetail.idkota = kota.idkota WHERE idorder = '$r[idorder]' AND (orderdetail.idstatusorder = 3 or orderdetail.idstatusorder = 4)");
         while ($h = mysqli_fetch_array($qqq)) { 
       ?>
         <tr align="center">
@@ -127,17 +127,12 @@ $tanggalakhir = $yearakhir . "-" . $dayakhir . "-" . $monthakhir;
       while ($bb = mysqli_fetch_array($aa)) {
         $ongkir = $ongkir + $bb["tarif"];
       }
+    }
       }
       ?>
     <?php // $aa = mysqli_query($con,"SELECT tarif FROM kota where idkota = '$r[idkota]'");
       // $aa = mysqli_query($con,"SELECT tarif FROM kota where idkota = '$r[idkota]'");
-      ?>// while ($bb = mysqli_fetch_array($aa)) {
-    //   $ongkir = $ongkir + $bb['tarif'];
-    // }
-
-    $no++;
-    }
-    ?>
+      ?>
     <tr align="center">
       <th colspan="5">
         Total Harga :

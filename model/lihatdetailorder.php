@@ -7,20 +7,16 @@ $idmerchant = $_GET["idmerchant"];
 <br>
 <br>
 <div class="container">
-  <div class="row margin40">
-    <div class="col-sm-8 col-sm-offset-2 text-center">
-      <div class="col-sm-12 text-center">
-        <h2>Riawayat Order Detail</h2>
-      </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="col-lg-8">
+      <h2 class="text-center mt-4">Riwayat Order Detail</h2>
       <a href="model/cetakfakturpemesanan.php?id=<?php echo $id; ?>&idmerchant=<?php echo $idmerchant; ?>" target=\"_blank\">
-        <button type="button" class="btn btn-primary">
-          <span class="glyphicon glyphicon-pencil"></span> Cetak Faktur
+        <button type="button" class="btn btn-info text-white mb-3">
+          <span class="bi bi-printer-fill"></span> Cetak Faktur
         </button>
       </a>
-      <br><br>
-      <br><br>
-      <table class="table table-striped table-bordered table-hover">
-        <tr align=center class="table-active">
+      <table class="table table-bordered">
+        <tr class="table-light">
           <th>No</th>
           <th>Nama Produk</th>
           <th>Jumlah Beli</th>
@@ -61,5 +57,3 @@ $idmerchant = $_GET["idmerchant"];
     </div>
   </div>
 </div>
-<!-- <div class="row">
-        <div class="col-md-3 col-sm-6 margin30"> -->

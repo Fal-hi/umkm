@@ -5,8 +5,8 @@ include "core/alert.php";
 ?>
 
 <section class="container-fluid px-4">
-  <div class="container">
     <h1 class="text-center" style="margin-top: 5rem;">Riwayat Transaksi</h1>
+  <div class="container" style="overflow-x: scroll;">
 		<a href="index.php?p=infotransfer" class="btn btn-info mb-3 text-white">Lihat tujuan transfer</a>
 		<table class="table">
 			<thead class="table-dark">
